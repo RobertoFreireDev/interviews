@@ -1,0 +1,1 @@
+﻿global using Weather.Domain.Entities.Base;
