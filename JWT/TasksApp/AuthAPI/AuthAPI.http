@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:5179 
+@refreshToken = YWRtaW51c2VyLS0tLS0xMy8xMi8yMDI1IDExOjIwOjA3LS0tLS3p0uAg04G1DXoRZbyAEHIIvHFMKKNhvhXyES/y0DZBP1HvKdwaS2eCSxGI4fckjsueC5Noof1FIUY2lf9s1gP4
+
+### login for invalid user
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+{ 
+  "Username": "testuser",
+  "Password": "P@ssw0rd!" 
+}
+
+### login for basicuser
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+{ 
+  "Username": "basicuser",
+  "Password": "password" 
+}
+
+### login for adminuser
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+{ 
+  "Username": "adminuser",
+  "Password": "password" 
+}
+
+### refreshtoken
+POST {{baseUrl}}/api/auth/refreshtoken
+Content-Type: application/json
+{ 
+  "refreshToken": "{{refreshToken}}" 
+}
+
+### logout for adminuser
+POST {{baseUrl}}/api/auth/logout
+Content-Type: application/json
+{ 
+  "username": "adminuser" 
+}

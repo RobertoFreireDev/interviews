@@ -1,0 +1,156 @@
+﻿@page "/"
+
+<div class="word-container">
+    @for (int i = 0; i <= word.Length; i++)
+    {
+        if (Arrows is not null)
+        {
+            foreach (var arrow in Arrows)
+            {
+                if (arrow.Value.Position == i)
+                {
+                    <span style="color: @arrow.Value.Color">@arrow.Key</span>
+                }
+            }
+        }
+        if (i < word.Length)
+        {
+            <span class="character">@word[i]</span>
+        }
+    }
+</div>
+<p>S = "ABC"</p>
+<p>RESULT: @result</p>
+<button @onclick="(async() => await RunAsync())">Run</button>
+@foreach(var value in Values)
+{
+    <p>@value.Key : @value.Value</p>
+}
+
+@code {
+    public class Arrow
+    {
+        public string Color;
+        public int Position;
+    }
+
+    private string word = "ADOBECODEBANC";
+    private string S = "ABC";
+    private string result = ""; //Expected = "BANC";
+    private string errorMessage = "";
+    private Dictionary<string, string> Values = new Dictionary<string, string>();
+    private Dictionary<char, Arrow> Arrows = new Dictionary<char, Arrow>
+    {
+        {'h', new Arrow() { Color = "red", Position = -1}},
+        {'b', new Arrow() { Color = "blue", Position = -1}},
+        {'e', new Arrow() { Color = "green", Position = -1}},
+        {'d', new Arrow() { Color = "yellow", Position = -1}},
+    };
+
+    private async Task RunAsync()
+    {
+        result = string.Empty;
+        Values = new Dictionary<string, string>();
+        result = await MinWindowAsync(word, S);
+        StateHasChanged();
+    }
+
+    private async Task SetArrows(Dictionary<char, int> arrows)
+    {
+        foreach (var arrow in Arrows)
+        {
+            arrow.Value.Position = -1;
+        }
+
+        foreach (var arrow in arrows)
+        {
+            SetArrow(arrow.Key, arrow.Value);
+        }
+
+        StateHasChanged();
+        await Task.Delay(1000);
+    }
+
+    private async Task SetValues(Dictionary<string, string> values)
+    {
+        Values = values;
+
+        StateHasChanged();
+        await Task.Delay(1000);
+    }
+
+    private void SetArrow(char symbol, int arrowPosition)
+    {
+        if (arrowPosition < 0 || arrowPosition > word.Length)
+        {
+            return;
+        }
+
+        var arrow = Arrows.FirstOrDefault(a => a.Key == symbol);
+
+        if (arrow.Value is not null)
+        {
+            arrow.Value.Position = arrowPosition;
+        }
+    }
+
+    public async Task<string> MinWindowAsync(string s, string t)
+    {
+        int[] map = new int[128];
+        foreach (char c in t) map[c]++;
+        int counter = t.Length, begin = 0, end = 0, d = int.MaxValue, head = 0;
+        while (end < s.Length)
+        {
+            await SetArrows(new Dictionary<char, int>{
+                { 'h', head },
+                { 'b', begin },
+                { 'e', end },
+            });
+            if (--map[s[end++]] >= 0) counter--;
+            await SetArrows(new Dictionary<char, int>{
+                { 'h', head },
+                { 'b', begin },
+                { 'e', end },
+            });
+            await SetValues(new Dictionary<string, string>
+            {
+                { "PartialResult", d == int.MaxValue ? "" : s.Substring(head, d) },
+                { "d", d.ToString() },
+                { "counter", counter.ToString() },
+            });
+            while (counter == 0)
+            {
+                if (end - begin < d) d = end - (head = begin);
+                await SetArrows(new Dictionary<char, int>{
+                    { 'h', head },
+                    { 'b', begin },
+                    { 'e', end },
+                });
+                if (++map[s[begin++]] > 0) counter++;
+                await SetArrows(new Dictionary<char, int>{
+                    { 'h', head },
+                    { 'b', begin },
+                    { 'e', end },
+                });
+                await SetValues(new Dictionary<string, string>
+                {
+                   { "PartialResult", d == int.MaxValue ? "" : s.Substring(head, d) },
+                   { "d", d.ToString() },
+                    { "counter", counter.ToString() },
+                });
+            }
+        }
+        return d == int.MaxValue ? "" : s.Substring(head, d);
+    }
+}
+
+
+<style>
+    .word-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        position: relative;
+    }
+</style>
