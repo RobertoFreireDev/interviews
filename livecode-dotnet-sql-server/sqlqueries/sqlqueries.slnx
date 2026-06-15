@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/scripts/">
+    <File Path="createtables.sql" />
+    <File Path="insertdata.sql" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="Answers.md" />
+    <File Path="Questions.md" />
+  </Folder>
+</Solution>

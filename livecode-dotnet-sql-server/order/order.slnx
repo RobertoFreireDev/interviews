@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/Application/">
+    <Project Path="order.application/order.application.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="order.domain/order.domain.csproj" />
+  </Folder>
+  <Folder Name="/Infra/">
+    <Project Path="order.repository/order.repository.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="order.api/order.api.csproj" />
+  </Folder>
+  <Folder Name="/scripts/">
+    <File Path="createtables.sql" />
+    <File Path="insertinitialdata.sql" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="order.tests.concurrency/order.tests.concurrency.csproj" Id="0e2b3c26-3289-41e8-9fc3-b9b3e2b99bc5" />
+  </Folder>
+</Solution>
