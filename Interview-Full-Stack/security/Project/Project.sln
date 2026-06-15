@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SymmetricEncryption", "SymmetricEncryption", "{AE9AD097-A12A-40EF-AE9C-66D86C5CF0DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AsymmetricEncryption", "AsymmetricEncryption", "{DF019BE4-FC61-43D9-895A-07F01E7E7ED7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hash", "Hash", "{CC67AF5D-5FC3-495F-AA08-CD1F765A0D77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SymmetricEncryption.Example", "SymmetricEncryption.Example\SymmetricEncryption.Example.csproj", "{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsymmetricEncryption.Example", "AsymmetricEncryption.Example\AsymmetricEncryption.Example.csproj", "{37F2F31B-79A3-456A-811C-06A5D0FD5C11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash.Example", "Hash.Example\Hash.Example.csproj", "{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Token", "Token", "{B950A0A5-FDD0-4FA8-88D4-518371563DD0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Token.Example", "Token.Example\Token.Example.csproj", "{4A92213E-56B0-4BB5-B420-C093F0FC4E43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash.Test", "Hash.Test\Hash.Test.csproj", "{664227C6-20D5-4BBD-9C1C-A593AE39EA0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Token.Test", "Token.Test\Token.Test.csproj", "{B42932C0-D37C-4479-B7B1-417A036FEE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymmetricEncryption.Test", "SymmetricEncryption.Test\SymmetricEncryption.Test.csproj", "{62ACB3C9-B344-4376-A82D-1C85DED74E49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsymmetricEncryption.Test", "AsymmetricEncryption.Test\AsymmetricEncryption.Test.csproj", "{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F2F31B-79A3-456A-811C-06A5D0FD5C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F2F31B-79A3-456A-811C-06A5D0FD5C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F2F31B-79A3-456A-811C-06A5D0FD5C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F2F31B-79A3-456A-811C-06A5D0FD5C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A92213E-56B0-4BB5-B420-C093F0FC4E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A92213E-56B0-4BB5-B420-C093F0FC4E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A92213E-56B0-4BB5-B420-C093F0FC4E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A92213E-56B0-4BB5-B420-C093F0FC4E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664227C6-20D5-4BBD-9C1C-A593AE39EA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664227C6-20D5-4BBD-9C1C-A593AE39EA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664227C6-20D5-4BBD-9C1C-A593AE39EA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664227C6-20D5-4BBD-9C1C-A593AE39EA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42932C0-D37C-4479-B7B1-417A036FEE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42932C0-D37C-4479-B7B1-417A036FEE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42932C0-D37C-4479-B7B1-417A036FEE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42932C0-D37C-4479-B7B1-417A036FEE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62ACB3C9-B344-4376-A82D-1C85DED74E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62ACB3C9-B344-4376-A82D-1C85DED74E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62ACB3C9-B344-4376-A82D-1C85DED74E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62ACB3C9-B344-4376-A82D-1C85DED74E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85F31CF6-B5B4-4CEA-9580-AAE64E6842C2} = {AE9AD097-A12A-40EF-AE9C-66D86C5CF0DF}
+		{37F2F31B-79A3-456A-811C-06A5D0FD5C11} = {DF019BE4-FC61-43D9-895A-07F01E7E7ED7}
+		{E4EDCEE5-CBC6-4355-8B68-7652646AC8C2} = {CC67AF5D-5FC3-495F-AA08-CD1F765A0D77}
+		{4A92213E-56B0-4BB5-B420-C093F0FC4E43} = {B950A0A5-FDD0-4FA8-88D4-518371563DD0}
+		{664227C6-20D5-4BBD-9C1C-A593AE39EA0A} = {CC67AF5D-5FC3-495F-AA08-CD1F765A0D77}
+		{B42932C0-D37C-4479-B7B1-417A036FEE28} = {B950A0A5-FDD0-4FA8-88D4-518371563DD0}
+		{62ACB3C9-B344-4376-A82D-1C85DED74E49} = {AE9AD097-A12A-40EF-AE9C-66D86C5CF0DF}
+		{AA60E9A5-4D3C-4B6D-AE65-CE4B92D43128} = {DF019BE4-FC61-43D9-895A-07F01E7E7ED7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E8D401E-1E55-412F-918D-FE386BCA77DC}
+	EndGlobalSection
+EndGlobal
