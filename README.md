@@ -28,3 +28,4 @@ This repository merges all interview projects, exercises, and code samples I hav
 - Frontend Development
 - Live Coding: .NET & SQL Server
 - Object-Oriented Programming (OOP)
+- GoLang
