@@ -1,0 +1,7 @@
+|-- configs
+     |-- app-settings.config.ts
+     |-- dt-norwegian.config.ts
+
+
+Configs:
+The config folder contains app settings and other predefined values.

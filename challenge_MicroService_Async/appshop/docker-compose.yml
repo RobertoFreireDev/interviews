@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  apiappshop:
+    image: ${DOCKER_REGISTRY-}apiappshop
+    build:
+      context: .
+      dockerfile: ApiAppShop/Dockerfile
+    depends_on:
+      - "redisdb"
+
+  creditcardprocessor:
+    image: ${DOCKER_REGISTRY-}creditcardprocessor
+    build:
+      context: .
+      dockerfile: CreditCardProcessor/Dockerfile
+
+  redisdb:
+    image: redis
+    container_name: redisdb
+    ports:
+      - "6379:6379"

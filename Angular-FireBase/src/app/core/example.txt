@@ -1,0 +1,60 @@
+|-- core
+       |-- authentication
+              |-- authentication.service.ts|spec.ts
+       |-- guards
+              |-- auth.guard.ts
+              |-- no-auth-guard.ts
+              |-- admin-guard.ts
+       |-- http
+              |-- user
+                     |-- user.service.ts|spec.ts
+              |-- api.service.ts|spec.ts
+       |-- interceptors
+              |-- api-prefix.interceptor.ts
+              |-- error-handler.interceptor.ts
+              |-- http.token.interceptor.ts
+       |-- mocks
+              |-- user.mock.ts
+       |-- services
+              |-- srv1.service.ts|spec.ts
+              |-- srv2.service.ts|spec.ts
+       |-- header
+              |-- header.component.ts|html|scss|spec.ts
+       |-- footer
+              |-- footer.component.ts|html|scss|spec.ts
+       |-- core.module.ts
+       |-- ensureModuleLoadedOnceGuard.ts
+       |-- logger.service.ts
+
+
+CoreModule:
+The CoreModule should contain singleton services (which is usually the case), universal components and other features where there’s only once instance per application. 
+To prevent re-importing the core module elsewhere, you should also add a guard for it in the core module’ constructor.
+
+Authentication:
+The authentication folder simply handles the authentication-cycle of the user (from login to logout).
+
+Footer and header:
+The footer- and header folders contains the global component-files, statically used across the entire application. These files will appear on every page in the application.
+
+Http folder:
+The http folder handles stuff like http calls from our application. I’ve also added a api.service.ts file to keep all http calls running through our application in one single place. 
+The folder does otherwise contain folders for interacting with the different API-routes.
+
+HttpInterceptor:
+the HttpInterceptor interface allows us to catch and modify the requests and responses from our API calls. The interceptors folder is a collection of interceptors I find specially useful.
+
+Guards:
+The guards folder contains all of the guards I use to protect different routes in my applications.
+
+Mocks:
+Mocks are specially useful for testing, but you can also use them to retrieve fictional data until the back-end is set up. The mocks folder contains all the mock-files of our app.
+
+Services:
+All additional singleton services are placed in the services folder.
+
+
+
+
+
+

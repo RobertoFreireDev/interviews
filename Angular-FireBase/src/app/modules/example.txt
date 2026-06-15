@@ -1,0 +1,9 @@
+|-- modules
+       |-- home
+           |-- components
+           |-- pages
+           |    |-- home
+           |         |-- home.component.ts|html|scss|spec
+           |
+           |-- home-routing.module.ts
+           |-- home.module.ts

@@ -1,0 +1,78 @@
+﻿<div id="warningChart" style="display: none;" class="alert alert-warning" role="alert">
+    <strong>Aviso:</strong> Sem dados dos sensores
+</div>
+
+<div id="dvTable"></div>
+
+@section Scripts
+{
+    <script>
+        refreshData();
+
+        var mainLoopId = setInterval(function () {
+            refreshData();
+        }, 1000);
+
+        function refreshData() {
+            $.ajax({
+                url: "/Home/GetData",
+                method: "GET"
+            }).done(function (data) {
+                if (data.length > 0) {
+                    renderTable(data);
+                    document.getElementById("warningChart").style.display = "none";
+                } else {
+                    document.getElementById("warningChart").style.display = "block";
+                }
+            });
+        }
+
+        function renderTable(data) {
+            let header = ["Data", "Tag", "Valor", "Status"];
+            let headerId = ["timestamp", "tag", "valor", "valido"];
+
+            var table = document.createElement("TABLE");
+            table.border = "1";
+
+            var columnCount = header.length;
+
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = header[i];
+                row.appendChild(headerCell);
+            }
+
+            for (var i = 0; i < data.length; i++) {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    if (j === 0) {
+                        cell.innerHTML = timeConverter(data[i][headerId[j]]);
+                    } else if (j === (columnCount - 1)) {
+                        cell.innerHTML = data[i][headerId[j]] === 1 ? "Processado " : "Erro";
+                    } else {
+                        cell.innerHTML = data[i][headerId[j]];
+                    }
+                }
+            }
+
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds() < 10 ? ("0" + a.getSeconds()) : a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            return time;
+        }
+    </script>
+}

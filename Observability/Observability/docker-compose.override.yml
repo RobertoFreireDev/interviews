@@ -1,0 +1,71 @@
+version: '3.4'
+
+volumes:
+  grafana-data:
+  loki-data:
+
+services:
+  gateway:
+    container_name: gateway
+    environment:
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: http://+:4001
+    ports:
+        - 4001:4001
+    depends_on:
+        loki:
+            condition: service_healthy
+  
+  orderapi:
+    container_name: orderapi
+    environment:
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: http://+:4002
+    ports:
+        - 4002:4002
+    depends_on:
+        loki:
+            condition: service_healthy
+  
+  catalogapi:
+    container_name: catalogapi
+    environment:
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: http://+:4003
+    ports:
+        - 4003:4003
+    depends_on:
+        loki:
+            condition: service_healthy
+
+  loki:
+    container_name: loki
+    image: grafana/loki:master
+    restart: unless-stopped
+    ports:
+       - 3100:3100
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki-data:/loki
+    healthcheck:
+        test: wget -q --tries=1 -O- http://localhost:3100/ready 
+        interval: 3s
+        timeout: 3s
+        retries: 10
+        start_period: 10s
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:master
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+        loki:
+            condition: service_healthy
+

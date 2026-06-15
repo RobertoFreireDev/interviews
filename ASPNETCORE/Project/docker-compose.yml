@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1Secure*Password1
+    mem_limit: 4GB
+  webapplication:
+    image: ${DOCKER_REGISTRY-}webapplication
+    build:
+      context: .
+      dockerfile: WebApplication/Dockerfile
+    depends_on:
+      - db

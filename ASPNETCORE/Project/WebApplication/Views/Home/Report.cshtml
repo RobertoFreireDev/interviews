@@ -1,0 +1,47 @@
+﻿@model RelatorioSensorViewModel
+
+@if (Model.pais != null)
+{
+    <table>
+        <thead>
+
+            <tr>
+
+                <td colspan="2" style="font-weight: bold;">@Model.pais.ToUpper() (@Model.total)</td>
+
+            </tr>
+        </thead>
+
+        <tr>
+            <th>Região</th>
+            <th>Sensor</th>
+        </tr>
+
+
+        @for (int i = 0; i < Model.regioes.Count; i++)
+        {
+            RegiaoViewModel regiao = Model.regioes[i];
+
+            @for (int j = 0; j < regiao.sensores.Count; j++)
+            {
+                SensorViewModel sensor = regiao.sensores[j];
+                <tr>
+                    @if (j == 0)
+                    {
+                        <td rowspan="@regiao.sensores.Count"> @regiao.nome (@regiao.total)</td>
+                    }
+
+                    <td>@sensor.nome (@sensor.total)</td>
+                </tr>
+
+            }
+        }
+    </table>
+}
+else
+{
+<div class="alert alert-warning" role="alert">
+    <strong>Aviso:</strong> Sem dados dos sensores
+</div>
+}
+

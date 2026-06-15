@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Events\Consumers\**" />
+    <EmbeddedResource Remove="Events\Consumers\**" />
+    <None Remove="Events\Consumers\**" />
+  </ItemGroup>
+
+</Project>

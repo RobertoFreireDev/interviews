@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.16" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiAppShop.Application\ApiAppShop.Application.csproj" />
+    <ProjectReference Include="..\ApiAppShop.CrossCutting.IoC\ApiAppShop.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\ApiAppShop.Domain\ApiAppShop.Domain.csproj" />
+    <ProjectReference Include="..\ApiAppShop.Log\ApiAppShop.Log.csproj" />
+  </ItemGroup>
+
+</Project>

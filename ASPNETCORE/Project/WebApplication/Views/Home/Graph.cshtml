@@ -1,0 +1,171 @@
+﻿@model RelatorioSensorViewModel
+
+<div id="invalidaDataChart" class="alert alert-danger" style="display: none;">
+    <strong>Erro:</strong> Dados dos sensores não são válidos!
+</div>
+
+<div id="noRegiaoAndSensorChart" style="display: none;" class="alert alert-primary" role="alert">
+    <strong>Aviso:</strong> Favor escolher uma região e sensor
+</div>
+
+<div id="noDataChart" style="display: none;" class="alert alert-warning" role="alert">
+    <strong>Aviso:</strong> Sem dados dos sensores
+</div>
+<br>
+
+<div id="regiaoSensorButton" style="display: none;">
+    <form>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownRegioESensor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Região - Sensor
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @for (int i = 0; i < Model.regioes.Count; i++)
+            {
+                RegiaoViewModel regiao = Model.regioes[i];
+
+                @for (int j = 0; j < regiao.sensores.Count; j++)
+                {
+                    SensorViewModel sensor = regiao.sensores[j];
+                    <a class="dropdown-item" onclick="functionRegiaoESensor('@regiao.nome'+'##'+'@sensor.nome')"> @regiao.nome -> @sensor.nome</a>
+                }
+            }
+        </div>
+    </form>
+</div>
+
+<br>
+
+<canvas id="myChart" style="display: none;"></canvas>
+
+
+@section Scripts
+{
+    <script>
+        let regiao = null;
+        let sensor = null;
+        let temDados;
+        let dadosInvalidos = false;
+
+        buscaSeTemDados();
+
+        renderTable();
+
+        function functionRegiaoESensor(regiaoSensorPreenchido) {
+            regiao = regiaoSensorPreenchido.split("##")[0];
+            sensor = regiaoSensorPreenchido.split("##")[1];
+
+            document.getElementById('dropdownRegioESensor').innerHTML = regiao + "->" + sensor;
+        }
+
+        var chart;
+
+        var mainLoopId = setInterval(function () {
+            refreshData();
+        }, 1000);
+
+        function renderScreen() {
+            if (temDados && (!regiao || !sensor)) {
+                document.getElementById("noRegiaoAndSensorChart").style.display = "block";
+            } else {
+                document.getElementById("noRegiaoAndSensorChart").style.display = "none";
+            }
+
+            if (!temDados) {
+                document.getElementById("noDataChart").style.display = "block";
+                document.getElementById("regiaoSensorButton").style.display = "none";
+            } else {
+                document.getElementById("regiaoSensorButton").style.display = "block";
+                document.getElementById("noDataChart").style.display = "none";
+            }
+
+            if (temDados && regiao && sensor) {
+                document.getElementById("myChart").style.display = "block";
+            } else {
+                document.getElementById("myChart").style.display = "none";
+            }
+
+            if (temDados && dadosInvalidos) {
+                document.getElementById("invalidaDataChart").style.display = "block";
+            } else {
+                document.getElementById("invalidaDataChart").style.display = "none";
+            }            
+        }
+
+        function refreshData() {
+            buscaSeTemDados();
+
+            if (temDados && regiao && sensor) {
+                buscarDados();              
+            }           
+        }
+
+        function buscaSeTemDados() {
+            let valorAntigoTemDados = temDados;
+            $.ajax({
+                url: "/Home/hasData",
+                method: "GET"
+            }).done(function (resultado) {
+                if (resultado == "hasData") {
+                    if (valorAntigoTemDados === false) {
+                        location.reload();
+                    }
+                    
+                    temDados = true;
+                } else if (resultado == "noData") {
+                    temDados = false;
+                }
+                renderScreen();
+            });
+        }
+
+        function buscarDados() {
+            $.ajax({
+                url: "/Home/GetLastResults?regiao=" + regiao + "&sensor=" + sensor + "",
+                method: "GET"
+            }).done(function (resultado) {
+                if (resultado == "INVALID DATA") {
+                    temDados = true;
+                    dadosInvalidos = true;
+                } else if (resultado && resultado.length > 0) {
+                    chart.data.datasets[0].data = resultado;
+                    temDados = true;
+                    dadosInvalidos = false;
+                    chart.update();
+                } else {
+                    temDados = false;
+                    dadosInvalidos = false;
+                }
+                renderScreen();
+            });
+        }
+
+        function renderTable() {
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["", "", "", "", "", "", "", "", "", ""],
+                    datasets: [{
+                        data: [],
+                        borderWidth: 1,
+                        borderColor: '#00c0ef',
+                        label: 'Valores dos Sensores',
+                    }]
+                },
+                options: {
+                    animation: {
+                        duration: 0
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: 0
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+}

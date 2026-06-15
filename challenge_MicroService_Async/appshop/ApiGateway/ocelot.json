@@ -1,0 +1,78 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/App/setapp",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/addapp",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/App/getapps",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/getapps",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/App/getappsbyuser/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/get/{id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/App/purchase",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/purchase",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/Auth/SignIn",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/signin",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/Auth/LogIn",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apiappshop",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}

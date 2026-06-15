@@ -1,0 +1,20 @@
+<div class="container m-4">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Ação (Simbolo)</th>
+        <th>Trimestre</th>
+        <th style ="cursor: pointer; width : 150px" scope="col" sortable="data" (sort)="onSort($event)">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resultado of resultados">
+        <td> {{ resultado.acaoSimbolo }}</td>
+        <td> {{ resultado.trimestre }}</td>
+        <td> {{ resultado.dataResultadosDoTrimestre.day + "/" + resultado.dataResultadosDoTrimestre.month }}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

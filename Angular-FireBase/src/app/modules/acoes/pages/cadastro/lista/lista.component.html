@@ -1,0 +1,20 @@
+<div class="container m-4">
+  <div class="row">
+    <table class="table table-striped">
+      <tr>
+        <th>Ação (Simbolo)</th>
+        <th>Empresa</th>
+        <th style="width: 40px;"></th>
+        <th style="width: 40px;"></th>
+      </tr>
+      <tr *ngFor="let acao of acoes">
+        <td> {{ acao.acaoSimbolo }}</td>
+        <td> {{ acao.empresa }}</td>
+        <th><span style ="cursor: pointer;" class="material-icons" (click)="editarAcao(acao)">edit</span></th>
+        <th><span style ="cursor: pointer;" class="material-icons" (click)="openModalDeConfirmacaoDeDelecaoDeAcao(acao)">delete</span></th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<app-confirmacao-modal (confirmacaoEvent)="confirmadoDelecaoAcao()" [modalLabels]="modalLabels"></app-confirmacao-modal>

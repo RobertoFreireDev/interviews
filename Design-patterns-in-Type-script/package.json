@@ -1,0 +1,29 @@
+{
+  "name": "design-patterns-in-type-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertoFreireFerrazPassos/Design-patterns-in-Type-script.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertoFreireFerrazPassos/Design-patterns-in-Type-script/issues"
+  },
+  "homepage": "https://github.com/RobertoFreireFerrazPassos/Design-patterns-in-Type-script#readme",
+  "dependencies": {
+    "rxjs": "^7.4.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6"
+  }
+}

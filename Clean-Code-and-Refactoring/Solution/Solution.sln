@@ -1,0 +1,102 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Composing Methods", "Composing Methods", "{8D35C5F7-660D-4CC3-B2A9-71B5556ACF16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moving Features between Objects", "Moving Features between Objects", "{31B7C750-5BEA-4992-A080-79908DAD408C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Organizing Data", "Organizing Data", "{1E588F98-D973-4969-BA78-F641AB797461}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simplifying Conditional Expressions", "Simplifying Conditional Expressions", "{90688B2C-1298-44B3-8729-26AE9EE71DAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simplifying Method Calls", "Simplifying Method Calls", "{7345E291-8D06-40D6-B91B-1D6F0DD6DD73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dealing with Generalization", "Dealing with Generalization", "{66A0BB67-A95B-484B-9186-2BEDB41C6E40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{A326F1A6-BB23-4A43-918B-B116C40F76FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extract Method", "Extract Method", "{EC2AC00B-7681-4732-B4A1-AF758CC855F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Remove Assignments to Parameters", "Remove Assignments to Parameters", "{3426B4A4-0F6B-473F-9580-BA2D67C38C4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Replace Method with Method Object", "Replace Method with Method Object", "{2015BC69-679E-4456-B486-38016CEB4623}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComposingMethods.ExtractMethod", "ComposingMethods.ExtractMethod\ComposingMethods.ExtractMethod.csproj", "{DD88A64D-D031-4BF7-A2C9-88E1399F2A31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComposingMethods.RemoveAssignmentstoParameters", "ComposingMethods.RemoveAssignmentstoParameters\ComposingMethods.RemoveAssignmentstoParameters.csproj", "{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComposingMethods.ReplaceMethodWithMethodObject", "ComposingMethods.ReplaceMethodWithMethodObject\ComposingMethods.ReplaceMethodWithMethodObject.csproj", "{E12F6C8A-B873-4C19-B05F-1F5A49069899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Replace Nested Conditional with Guard Clauses", "Replace Nested Conditional with Guard Clauses", "{0AE020F7-D3D4-4A90-94ED-0E785CF396C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplifyingConditionalExpressions.ReplaceNestedConditional", "SimplifyingConditionalExpressions.ReplaceNestedConditional\SimplifyingConditionalExpressions.ReplaceNestedConditional.csproj", "{9E62FF8C-3923-44B8-96BA-92AF1D5D252F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Introduce Null Object", "Introduce Null Object", "{807E04BE-2257-4761-B7C4-FF02BE5DFB5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplifyingConditionalExpressions.IntroduceNullObject", "SimplifyingConditionalExpressions.IntroduceNullObject\SimplifyingConditionalExpressions.IntroduceNullObject.csproj", "{AC47AC64-4138-4DAB-B5FF-3312EBD328D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Replace Conditional with Polymorphism", "Replace Conditional with Polymorphism", "{4204A267-732C-4B00-A517-58F46F0F051D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplifyingConditionalExpressions.ReplaceWithPolymorphism", "SimplifyingConditionalExpressions.ReplaceWithPolymorphism\SimplifyingConditionalExpressions.ReplaceWithPolymorphism.csproj", "{D8195813-E0A9-4A4F-9F09-B622CEEE5732}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD88A64D-D031-4BF7-A2C9-88E1399F2A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD88A64D-D031-4BF7-A2C9-88E1399F2A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD88A64D-D031-4BF7-A2C9-88E1399F2A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD88A64D-D031-4BF7-A2C9-88E1399F2A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12F6C8A-B873-4C19-B05F-1F5A49069899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12F6C8A-B873-4C19-B05F-1F5A49069899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12F6C8A-B873-4C19-B05F-1F5A49069899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12F6C8A-B873-4C19-B05F-1F5A49069899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E62FF8C-3923-44B8-96BA-92AF1D5D252F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E62FF8C-3923-44B8-96BA-92AF1D5D252F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E62FF8C-3923-44B8-96BA-92AF1D5D252F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E62FF8C-3923-44B8-96BA-92AF1D5D252F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC47AC64-4138-4DAB-B5FF-3312EBD328D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC47AC64-4138-4DAB-B5FF-3312EBD328D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC47AC64-4138-4DAB-B5FF-3312EBD328D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC47AC64-4138-4DAB-B5FF-3312EBD328D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8195813-E0A9-4A4F-9F09-B622CEEE5732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8195813-E0A9-4A4F-9F09-B622CEEE5732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8195813-E0A9-4A4F-9F09-B622CEEE5732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8195813-E0A9-4A4F-9F09-B622CEEE5732}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC3CC2AA-AC48-4065-8BBD-E70BFED71F1A} = {A326F1A6-BB23-4A43-918B-B116C40F76FF}
+		{EC2AC00B-7681-4732-B4A1-AF758CC855F4} = {8D35C5F7-660D-4CC3-B2A9-71B5556ACF16}
+		{3426B4A4-0F6B-473F-9580-BA2D67C38C4A} = {8D35C5F7-660D-4CC3-B2A9-71B5556ACF16}
+		{2015BC69-679E-4456-B486-38016CEB4623} = {8D35C5F7-660D-4CC3-B2A9-71B5556ACF16}
+		{DD88A64D-D031-4BF7-A2C9-88E1399F2A31} = {EC2AC00B-7681-4732-B4A1-AF758CC855F4}
+		{8BFB8124-EF4C-466A-9D4C-0AF28316A3BC} = {3426B4A4-0F6B-473F-9580-BA2D67C38C4A}
+		{E12F6C8A-B873-4C19-B05F-1F5A49069899} = {2015BC69-679E-4456-B486-38016CEB4623}
+		{0AE020F7-D3D4-4A90-94ED-0E785CF396C4} = {90688B2C-1298-44B3-8729-26AE9EE71DAE}
+		{9E62FF8C-3923-44B8-96BA-92AF1D5D252F} = {0AE020F7-D3D4-4A90-94ED-0E785CF396C4}
+		{807E04BE-2257-4761-B7C4-FF02BE5DFB5A} = {90688B2C-1298-44B3-8729-26AE9EE71DAE}
+		{AC47AC64-4138-4DAB-B5FF-3312EBD328D9} = {807E04BE-2257-4761-B7C4-FF02BE5DFB5A}
+		{4204A267-732C-4B00-A517-58F46F0F051D} = {90688B2C-1298-44B3-8729-26AE9EE71DAE}
+		{D8195813-E0A9-4A4F-9F09-B622CEEE5732} = {4204A267-732C-4B00-A517-58F46F0F051D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D69B9CF6-A4C6-4093-939C-8BCD561E70AE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "stock-fa87b": {
+      "hosting": {
+        "app": [
+          "stock-fa87b"
+        ]
+      }
+    }
+  }
+}

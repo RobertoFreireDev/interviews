@@ -1,0 +1,34 @@
+<div class="container m-4">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="cadastroForm">
+        <div class="form-group">
+          <label for="acaoSimbolo">Ação (Simbolo)</label>
+          <input [readonly] = ehModoDeEdicao
+            type="text"
+            id="acaoSimbolo"
+            formControlName="acaoSimbolo"
+            class="form-control"
+            placement="right"
+            ngbTooltip="EX: PETR4">
+            <div style="color:#FF0000;" *ngIf="cadastroForm.controls['acaoSimbolo'].errors &&
+              cadastroForm.controls['acaoSimbolo'].errors.acaoJaExiste"> Ação já está Cadastrada</div>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input
+            type="text"
+            id="empresa"
+            formControlName="empresa"
+            class="form-control"
+            placement="right"
+            ngbTooltip="EX: Petroleo Brasileiro SA Petrobras">
+        </div>
+        <button class="btn btn-outline-success mb-2 mr-2" [disabled]="cadastroForm.invalid" (click)="openModalDeConfirmacao()">{{ modalLabels.botao }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<app-confirmacao-modal (confirmacaoEvent)="confirmadoCadastrarOuEditarAcao()" [modalLabels]="modalLabels"></app-confirmacao-modal>

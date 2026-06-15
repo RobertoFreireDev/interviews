@@ -1,0 +1,3 @@
+Lazy Loading:
+The application uses lazy-loading, which means the module isn’t loaded before the user actually accesses the route. 
+By using the structure described in the “Modules”-section, you can easily refer each module in your main app-routing file.

@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "9001:80"
+
+  apiappshop:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "9002:80" 
+    depends_on:
+      - mongodbcontainer
+      - rabbitmq
+
+  mongodbcontainer:
+    image: mongo    
+    ports:
+      - 27017:27017
+  
+  rabbitmq:
+    image: masstransit/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+  
+  creditcardprocessor:
+    depends_on:
+      - rabbitmq
+

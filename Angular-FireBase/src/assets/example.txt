@@ -1,0 +1,10 @@
+|-- scss
+     |-- partials
+          |-- _layout.vars.scss
+          |-- _responsive.partial.scss
+     |-- _base.scss
+|-- styles.scss
+
+
+Styling:
+The global styles for the project are placed in a scss folder under assets .

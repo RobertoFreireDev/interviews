@@ -1,0 +1,64 @@
+COMMIT 'SINGLETON - SOLUTION'
+
+-- compare two objects:
+console.log(Object.is(userService,userService2));
+-- missing private in property userService:
+export class UserSingletonService {
+    static userService : UserService = null;
+
+COMMIT 'SINGLETON - SOLUTION 2'
+
+Static properties (properties belong to the class)
+When we use the static keyword on properties we define on a class, they belong to the class itself.
+That means that we cannot access those properties from an instance of the class.
+We can only access the properties directly by referencing the class itself.
+
+Constructor return optional
+constructor UserService(): UserService
+
+COMMIT 'ADDED ORDER LOGIC'
+
+Abstract Classes
+Abstract classes are base classes from which other classes may be derived. They may not be instantiated directly. Unlike an interface, an abstract class may contain implementation details for its members. 
+
+he Liskov Substitution Principle:
+
+At first, we use inheritance when there is an “IS-A” relationship
+An ProductModel and ServiceModel is an ItemModel
+BUT, it must follows the Liskov Substitution Principle.
+The principle defines that objects of a superclass (ItemModel) shall be replaceable with objects of its subclasses (ProductModel and ServiceModel) without breaking the application. That requires the objects of your subclasses to behave in the same way as the objects of your superclass. 
+
+counterexample: Square and Rectangle
+
+COMMIT 'STATE - PROBLEM'
+
+OrderService is not following the Dependency Inversion Principle
+
+High-level modules (OrderService), which provide complex logic, should be easily reusable and unaffected by changes in low-level modules (ItemService), which provide utility features (how to associate user to item). To achieve that, you need to introduce an abstraction (Interface for ItemService) that decouples the high-level and low-level modules from each other.
+
+Right now, if we change for example the name of the class ItemService or using another class with the same contract, will impact in changes in OrderService
+
+THE PROBLEM:
+The function approveOrder in OrderService has a lot of logic of how to handle the state of order
+
+
+COMMIT 'STATE - SOLUTION'
+
+We want to delegate all the logic of how to handle the state of order classes that each one represents each state
+
+OrderStateContext is like a copy of the order. OrderStateContext knows the orderId and its state
+
+Each State class knows the context so it can get information about the order and also can change to a new state
+
+COMMIT 'STATE - SOLUTION 2'
+
+Trying to remove duplication and using only OrderModel
+Right now OrderModel is the context
+
+changeState(stateEnum : OrderStateEnum) in OrderModel using enum is a way to decouple instead of using the class
+
+COMMIT 'ADAPTER - SOLUTION'
+
+FIX:
+ItemJsonToXmlAdapter convert function must be named getDetails and it must extends ItemModel
+So, The adapter pretends to be an item which get details in xml. 
