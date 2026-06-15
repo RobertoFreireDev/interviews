@@ -1,0 +1,63 @@
+-- =============================================
+-- Author:      Passos, Roberto
+-- Create Date: 08/28/2021
+-- Description: Create Table UR_USER 
+-- =============================================
+
+DROP TABLE IF EXISTS UR_USER
+
+CREATE TABLE UR_USER (
+	USER_ID uniqueidentifier NOT NULL PRIMARY KEY,
+	NAME VARCHAR(200) NOT NULL,
+	BIRTHDATE DATE NOT NULL,
+	EMAIL VARCHAR(100) UNIQUE NOT NULL,
+	PASSWORD VARCHAR(30) NULL,
+	ACTIVE BIT NULL,
+	GENDERID uniqueidentifier NOT NULL,
+)
+GO
+
+ALTER TABLE UR_USER ADD CONSTRAINT FK_USER_GENDER
+FOREIGN KEY(GENDERID) REFERENCES UR_GENDER(GENDER_ID)
+GO
+
+DECLARE @Feminino AS uniqueidentifier
+SELECT @Feminino = [GENDER_ID] FROM UR_GENDER WHERE DESCRIPTION = 'Feminino'
+PRINT @Feminino
+
+DECLARE @Masculino AS uniqueidentifier
+SELECT @Masculino = [GENDER_ID] FROM UR_GENDER WHERE DESCRIPTION = 'Masculino'
+PRINT @Masculino
+
+INSERT INTO UR_USER VALUES(NEWID(),'ANDRE TORRES','1985/12/14','ANDRE@IG.COM','ASEQW3232E',1,@Masculino)
+INSERT INTO UR_USER VALUES(NEWID(),'TEREZA DIAS','1982/12/29','TEREZA@IG.COM','',0,@Feminino)
+INSERT INTO UR_USER VALUES(NEWID(),'VANIA GOMES','1967/11/01','VANIA@IG.COM','ASW3DsS',1,@Feminino)
+INSERT INTO UR_USER VALUES(NEWID(),'VALDIR BRITTO','1990/10/19','VALDIR@IG.COM','',0,@Masculino)
+INSERT INTO UR_USER VALUES(NEWID(),'MARCIO FERNANDES','1989/02/22','MARCIO@IG.COM','',1,@Masculino)
+INSERT INTO UR_USER VALUES(NEWID(),'LUCAS GOMES','1981/01/14','LUCAS@IG.COM','23ASD23',1,@Masculino)
+GO
+
+SELECT * 
+FROM UR_USER U
+JOIN UR_GENDER G ON G.GENDER_ID = U.GENDERID
+WHERE G.DESCRIPTION = 'Masculino'
+GO
+
+-- Indexes on Computed Columns
+ALTER TABLE UR_USER
+ADD 
+    email_local_part AS 
+        SUBSTRING(email, 
+            0, 
+            CHARINDEX('@', email, 0)
+        );
+GO
+
+CREATE INDEX ix_user_email_local_part
+ON UR_USER(email_local_part);
+
+SELECT U.Name,  U.email_local_part
+FROM UR_USER U
+JOIN UR_GENDER G ON G.GENDER_ID = U.GENDERID
+WHERE G.DESCRIPTION = 'Masculino'
+GO

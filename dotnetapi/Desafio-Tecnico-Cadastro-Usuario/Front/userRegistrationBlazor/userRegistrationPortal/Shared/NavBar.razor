@@ -1,0 +1,45 @@
+﻿<div class="sidebar">
+    <NavLink class="nav-link" href="/user" Match="NavLinkMatch.All">
+        <Icon Name="IconName.PersonFillGear"></Icon>
+    </NavLink>
+    <NavLink class="nav-link" href="/report" Match="NavLinkMatch.All">
+        <Icon Name="IconName.Table"></Icon>
+    </NavLink>
+</div>
+
+<style>
+ /* CSS isolation didn't work! */
+.sidebar {
+    margin: 10px 20px;
+    padding: 0;
+    height: 60px;
+    background-color: rgba(0, 51, 153,0.1);
+    border-radius: 25px;
+    border-style: solid;
+    overflow: hidden;
+    border-width: 2px;
+    border-color: rgba(0, 51, 153,0.3);
+    box-shadow: 2px 4px 5px rgba(0, 51, 153,0.5);
+    background-image: linear-gradient(to top left, rgba(0, 51, 153,0.2), rgba(0, 51, 153,0.3));
+}
+
+.sidebar a {
+    color: rgb(0, 3, 7);
+    font-weight: 500;
+    padding: 16px;
+    text-decoration: none;
+    text-align: center;
+    float: left;
+}
+
+.sidebar a.active {
+    font-size: 18px;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-image: linear-gradient(to top left, rgba(0, 51, 153,0.1), rgba(0, 51, 153,0.15));
+    font-size: 18px;
+    color: white;
+}
+</style>

@@ -1,0 +1,40 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+td input {
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.form-check-label {
+  margin-right: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.btn {
+  box-shadow: 2.5px 2.5px rgba(0, 51, 153,0.5);
+  color: rgba(0, 51, 153,0.8);
+  background-color: rgb(255, 255, 255);
+  border-color: darkcyan;
+}
+
+.btn:hover {
+  background-color: rgba(0, 51, 153,0.05);
+  color: rgba(0, 51, 153,1);
+  box-shadow: 1px 1px rgb(0, 13, 37);
+}

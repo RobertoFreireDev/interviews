@@ -1,0 +1,12 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{ modalObject.title }}</h4>
+  </div>
+  <div class="modal-body">
+    <p>{{ modalObject.text }}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-dark" (click)="confirm(); modal.close('Close click');">Sim</button>
+    <button type="button" class="btn btn-dark" (click)="modal.close('Close click')">Nao</button>
+  </div>
+</ng-template>

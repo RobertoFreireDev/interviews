@@ -1,0 +1,67 @@
+<div style="position:absolute; right:20px; top:-5px;">
+  <app-alertbox *ngIf="messageAlert.active" [message]="messageAlert.message" [type]="messageAlert.type"></app-alertbox>
+</div>
+<div class="container m-4">
+  <form [formGroup]="userSearchForm">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-5">
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            placeholder="Pesquisar por nome">
+        </div>
+        <div class="col-2">
+          <span>
+              <select class="form-control" formControlName="active">
+                <option *ngFor="let activeOption of activeOptions" [value]="activeOption"> {{ activeOption }}</option>
+              </select>
+          </span>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-primary" [disabled]="isLoading" (click)="searchUserByFilter()">Buscar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <table class="table table-striped">
+      <tr>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>E-mail</th>
+        <th>Sexo</th>
+        <th class="text-center">Ativo</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td> {{ user.name }}</td>
+        <td> {{ getDate(user.birthDate) }}</td>
+        <td> {{ user.email }}</td>
+        <td> {{ user.gender }}</td>
+        <td>
+          <div class="text-center">
+            <app-check-box [disabled]="isLoading" [id]="user.id" (onToggle)="toggleActivationToUser(user.id)" [active]="user.active"></app-check-box>
+          </div>
+        </td>
+        <th><span  [ngStyle]="{ cursor: !isLoading ? 'pointer' : ''}"  (click)="editUser(user)">
+          <div class="text-center" style="color: rgba(0, 51, 153,0.8);">
+            <i class="fas fa-edit"></i>
+          </div>
+          </span>
+        </th>
+        <th><span  [ngStyle]="{ cursor: !isLoading ? 'pointer' : ''}"  (click)="openModalToDeleteUser(user)">
+          <div class="text-center" style="color: rgb(255, 0, 0,0.8);">
+            <i class="fas fa-trash"></i>
+          </div>
+        </span>
+      </th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<app-modal (confirmationEvent)="confirmDeleteUser()" [modalObject]="modalDeleteUser"></app-modal>

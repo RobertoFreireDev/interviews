@@ -1,0 +1,67 @@
+<div style="position:absolute; right:20px; top:-5px;">
+  <app-alertbox *ngIf="messageAlert.active" [message]="messageAlert.message" [type]="messageAlert.type"></app-alertbox>
+</div>
+
+<div class="container m-4">
+    <div>
+      <form [formGroup]="userForm">
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+            placement="right"
+            placeholder="Nome">
+            <div class="errorMessage" *ngIf="userForm.controls['name'].errors && userForm.controls['name'].touched"> Nome deve ser preenchido com pelo menos 3 caracteres</div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-5">
+              <select class="form-control" formControlName="gender" ngbTooltip="Sexo">
+                <option *ngFor="let gender of genders" [value]="gender"> {{ gender }}</option>
+              </select>
+            </div>
+            <div class="col-7">
+              <div class="input-group" ngbTooltip="Data de Nascimento">
+                <input class="form-control" formControlName="birthDate" placeholder="yyyy-mm-dd"
+                        name="dp" type="date" ngbDatepicker #d="ngbDatepicker" name>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            placement="right"
+            placeholder="E-mail">
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placement="right"
+            placeholder="Senha">
+        </div>
+        <div *ngIf="isEditMode()" class="form-group checkbox">
+          <label class="form-check-label">Usuário Ativo: </label>
+          <input type="checkbox"
+          class="form-check-input"
+          formControlName="active"
+          [(ngModel)]="user.active"
+          (ngModelChange)="toggleActivationToUser()">
+        </div>
+        <div class="buttons">
+          <button class="btn btn-delete mb-2 mr-2" [disabled]="isLoading" *ngIf="isEditMode()" (click)="openModalToDeleteUser()">Excluir</button>
+          <button class="btn btn-save mb-2 mr-2" [disabled]="!userForm.valid || isLoading" (click)="saveUser()"> {{ isEditMode() ?  "Editar" : "Salvar"}}</button>
+        </div>
+      </form>
+    </div>
+</div>
+
+<app-modal (confirmationEvent)="confirmDeleteUser()" [modalObject]="modalDeleteUser"></app-modal>

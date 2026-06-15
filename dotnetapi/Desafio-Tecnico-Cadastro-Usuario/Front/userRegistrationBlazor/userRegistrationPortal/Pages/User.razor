@@ -1,0 +1,149 @@
+﻿@page "/"
+@page "/user"
+@using userRegistrationPortal.Models;
+
+<div class="container m-4">
+    <div>
+        <EditForm Model="@user">
+            <DataAnnotationsValidator/>
+            <div class="form-group">
+                <InputText id="name" @bind-Value="@user.Name" class="form-control" placeholder="Name" />
+                <ValidationMessage For="() => user.Name"/>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-5">
+                        <InputSelect class="form-control" @bind-Value="@user.Gender">
+                            <option value="">Select a gender</option>
+                            @foreach (var gender in genders)
+                            {
+                                <option value="@gender">@gender</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="() => user.Gender"/>
+                    </div>
+                    <div class="col-7">
+                        <InputDate class="form-control" @bind-Value="@user.BirthDate" placeholder="yyyy-mm-dd"/>
+                        <ValidationMessage For="() => user.BirthDate"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <InputText id="email" @bind-Value="@user.Email" class="form-control" type="email" placeholder="E-mail" />
+                <ValidationMessage For="() => user.Email" />
+            </div>
+            <div class="form-group">
+                <InputText id="password" @bind-Value="@user.Password" class="form-control" type="Password" placeholder="Password" />
+            </div>
+             @if(IsEditMode())
+             {
+                <div class="form-group checkbox">
+                    <label class="form-check-label">Usuário Ativo:</label>
+                    <InputCheckbox @bind-Value="@user.Active" />
+                </div>
+             }            
+            <div class="buttons">
+                @if(IsEditMode())
+                {
+                    <button
+                        class="btn btn-delete mb-2 mr-2" 
+                        disabled="@isLoading" 
+                        @onclick="OpenModalToDeleteUser">
+                        Excluir
+                    </button>
+                }                
+                <button 
+                    class="btn btn-save mb-2 mr-2"
+                    type="submit"
+                        disabled="@(!isUserFormValid || isLoading)"
+                    @onclick="SaveUser"
+                >
+                    @((IsEditMode() ? "Editar" : "Salvar"))
+                </button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private UserModel user = new UserModel();
+    private bool isLoading = false;
+    private bool isUserFormValid = false;
+    private List<string> genders = new List<string> { "Male", "Female" };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        var isUserFormValidTemp = isUserFormValid;
+        var validationResults = new List<ValidationResult>();
+        var validationContext = new ValidationContext(user);
+        var isValid = Validator.TryValidateObject(user, validationContext, validationResults, true);
+
+        if (isUserFormValidTemp != isValid)
+        {
+            isUserFormValid = isValid;
+            StateHasChanged();
+        }
+    }
+
+    private void SaveUser()
+    {
+    }
+
+    private bool IsEditMode()
+    {
+        return false;
+    }
+
+    private void OpenModalToDeleteUser()
+    {
+    }
+}
+
+<style>
+.form-group {
+    margin-bottom: 10px;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: center;
+}
+
+.form-check-label {
+    margin-right: 10px;
+}
+
+.container {
+    padding-right: 50px;
+}
+
+.validation-message {
+    font-size: 9px;
+    color: #f10303;
+}
+
+input.ng-dirty.ng-invalid:not(form) {
+    border-color: #f10303;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-delete {
+    box-shadow: 2px 2px rgba(219, 15, 25,0.5);
+    color: rgba(219, 15, 25,1);
+    border-color: rgb(219, 15, 25);
+}
+
+.btn-save {
+    box-shadow: 2px 2px rgba(0, 51, 153,0.5);
+    color: rgba(0, 51, 153,1);
+    border-color: darkcyan;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+</style>
