@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Web Worker Demo</h2>
+
+<button onclick="start()">Start</button>
+<input placeholder="Type while calculating">
+
+<div id="result"></div>
+
+<script>
+const workerCode = `
+    onmessage = function(e) {
+        let sum = 0
+        for (let i = 0; i < e.data; i++) {
+        sum += i
+        }
+        postMessage(sum)
+    }
+`
+
+const blob = new Blob([workerCode], { type: "application/javascript" })
+const worker = new Worker(URL.createObjectURL(blob))
+
+function start() {  
+  worker.postMessage(1000000000)
+
+  worker.onmessage = (e) => {
+    document.getElementById("result").textContent = "Result: " + e.data
+  }
+}
+</script>
+
+</body>
+</html>

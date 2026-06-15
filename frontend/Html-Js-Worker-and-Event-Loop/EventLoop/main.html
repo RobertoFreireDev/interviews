@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Event Loop Demo</title>
+
+<style>
+body{
+  font-family: monospace;
+  background:#111;
+  color:#00ff9c;
+  padding:20px;
+}
+
+h1{
+  color:#00ffaa;
+}
+
+button{
+  background:#000;
+  color:#00ff9c;
+  border:1px solid #00ff9c;
+  padding:10px;
+  margin-bottom:20px;
+  cursor:pointer;
+}
+
+#log{
+  background:#000;
+  padding:10px;
+  border:1px solid #00ff9c;
+  height:400px;
+  overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<h1>JavaScript Event Loop Visualization</h1>
+
+<button onclick="runDemo()">Run Demo</button>
+
+<div id="log"></div>
+
+<script>
+
+const logBox = document.getElementById("log")
+
+function log(message){
+  const div = document.createElement("div")
+  div.textContent = message
+  logBox.appendChild(div)
+}
+
+function runDemo(){
+
+  logBox.innerHTML = ""
+
+  log("SCRIPT START")
+
+  setTimeout(()=>{
+    log("Macrotask 1 (setTimeout 0)")
+
+    Promise.resolve().then(()=>{
+      log("Microtask inside Macrotask 1")
+    })
+
+  },0)
+
+  setTimeout(()=>{
+    log("Macrotask 2 (setTimeout 0)")
+  },0)
+
+  Promise.resolve()
+    .then(()=>{
+      log("Microtask 1 (Promise.then)")
+
+      queueMicrotask(()=>{
+        log("Microtask inside Microtask")
+      })
+
+      setTimeout(()=>{
+        log("Macrotask from Microtask")
+      },0)
+    })
+    .then(()=>{
+      log("Microtask 2 (Promise.then)")
+    })
+
+  queueMicrotask(()=>{
+    log("Microtask 3 (queueMicrotask)")
+  })
+
+  setInterval(()=>{
+    log("Macrotask recurring (setInterval)")
+  },3000)
+
+  heavySync()
+
+  log("SCRIPT END")
+}
+
+function heavySync(){
+
+  log("Heavy synchronous task START")
+
+  let sum = 0
+
+  for(let i=0;i<200000000;i++){
+    sum += i
+  }
+
+  log("Heavy synchronous task END")
+
+}
+
+</script>
+
+</body>
+</html>

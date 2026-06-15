@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "parcel": "^2.16.3",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "ts:init": "tsc --init",
+    "dev": "parcel index.html"
+  }
+}
