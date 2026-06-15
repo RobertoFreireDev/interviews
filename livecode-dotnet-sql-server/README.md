@@ -35,3 +35,26 @@ https://localhost:7046/swagger/index.html
   }
 }
 ```
+
+## You need a transaction.
+
+The important point is not SaveChangesAsync(). EF Core already wraps a single SaveChangesAsync() in a transaction, but your code performs reads + validation + updates before calling SaveChangesAsync().
+
+Without an explicit transaction:
+
+- Read inventory
+- Validate stock
+- Another order modifies stock
+- Your order continues
+- SaveChanges
+
+This can result in overselling inventory.
+
+Your transaction ensures:
+
+- Inventory rows remain locked (XLOCK)
+- Validation uses a consistent view of the data
+- Stock updates, order creation, and order items are committed atomically
+- No other transaction can modify the locked inventory rows until commit/rollback
+
+So the transaction is protecting the entire workflow, not just the final save.
