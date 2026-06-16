@@ -48,7 +48,7 @@ public class OrderControllerIntegrationTests : IClassFixture<WebApplicationFacto
         using var db = GetDbContext();
         var seeds = new List<InventoryEntity>
         {
-            new() { Id = 1, ProductId = ProductId, Availability = 50 }
+            new() { ProductId = ProductId, Availability = 50 }
         };
 
         await db.Inventories.AddRangeAsync(seeds);
