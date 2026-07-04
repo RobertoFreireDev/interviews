@@ -1,0 +1,14 @@
+global using System;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Diagnostics;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Application;
+global using Application.Dtos.DataContracts.Request;
+global using Application.Interfaces;
+global using Infra;
+global using Infra.Extensions;
+global using Api.Endpoints;
+global using Api.Extensions;
+global using Api.Handlers;

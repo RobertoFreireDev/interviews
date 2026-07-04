@@ -1,0 +1,10 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Threading.Tasks;
+global using Xunit;
+global using NSubstitute;
+global using Domain;
+global using Application;
+global using Application.Dtos.DataContracts.Request;
+global using Application.Dtos.DataContracts.Response;
+global using Application.Interfaces;

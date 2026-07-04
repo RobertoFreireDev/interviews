@@ -5,6 +5,7 @@ This repository merges all interview projects, exercises, and code samples I hav
 # Content
 
 - AI projects
+- FullStack-with-Claude
 - ASP.NET Core
 - Angular + Firebase
 - Authentication & Authorization
